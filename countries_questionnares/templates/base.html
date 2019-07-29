@@ -1,0 +1,28 @@
+﻿{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTS-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>
+        {% block title %}
+            Countries Questionnares
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+    {% block content %}
+        Welcome to the questionnaire to find your personal point on the       Inglehart–Welzel Cultural Map!
+
+Here you can get your personal point on the Inglehart–Welzel Cultural Map
+<p> 
+<a href="{% url 'wvs_point_about' %}">More about the Inglehart–Welzel map</a>
+</p>
+<p>
+<a href="{% url 'wvs_point_questionnaire' %}">Run the test</a>
+    {% endblock %}
+</p>     
+</body>
+</html>

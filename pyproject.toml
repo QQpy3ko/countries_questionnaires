@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "QQpy3ko_countries_questionnares"
+version = "0.1.0"
+description = ""
+authors = ["Aleksandr Vinogradov <QQpy3ko@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+django = "^2.2"
+psycopg2 = "^2.8"
+psycopg2-binary = "^2.8"
+Pillow = "^6.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

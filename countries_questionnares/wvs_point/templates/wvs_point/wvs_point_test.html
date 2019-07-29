@@ -1,0 +1,51 @@
+{% block content %}   
+
+{% if error_message %}
+<p><span style="color: red"><strong>{{ error_message }}</strong></span></p>
+{% endif %}
+
+<form action="{% url 'wvs_point_questionnaire' %}" method="post">
+
+    {% csrf_token %}
+
+    {% for question in questions_list %}
+
+        {{ question.question_text }}<p>
+
+        {% for choice in question.choice_set.all %}
+
+            {% if question.question_name == 'autonomy' %} 
+
+                {% if choice.choice_text == 'Obedience' %}
+
+                {{ choice.choice_text }}
+                <input type="checkbox" name="{{ question.question_name }}" value="3.0" />
+                <br>
+
+                {% else %}
+
+                {{ choice.choice_text }}
+                <input type="checkbox" name="{{ question.question_name }}" value="{{ choice.value }}" />
+                <br>
+
+                {% endif %}
+
+            {% else %}
+
+                {{ choice.choice_text }}
+                <input type="radio" name="{{ question.question_name }}" value="{{ choice.value }}" />
+                <br>
+
+            {% endif %}
+
+            
+
+        {% endfor %}
+        </p>
+    {% endfor %}
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+{% endblock %}

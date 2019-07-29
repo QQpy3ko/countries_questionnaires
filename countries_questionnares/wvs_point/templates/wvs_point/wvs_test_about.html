@@ -1,0 +1,17 @@
+{% load static %}
+
+{% block content %}   
+
+There is a image of the Inglehart–Welzel Cultural Map. 
+<br>
+
+<img src="{% static "wvs_point/vws_map_template.png" %}" alt="Inglehart–Welzel Cultural Map (wave 6) image"> 
+
+<p>
+Run the test to find your personal point on it. For example, my point is a bit above and to the left of Finland.
+</p>
+
+<a href="{% url 'wvs_point_questionnaire' %}">Run the test</a>
+
+{% endblock %}
+
