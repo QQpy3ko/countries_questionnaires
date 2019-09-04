@@ -16,7 +16,7 @@
 
             {% if question.question_name == 'autonomy' %} 
 
-                {% if choice.choice_text == 'Obedience' %}
+                {% if choice.choice_text == 'Obedience' or choice.choice_text == 'Religious faith' %}
 
                 {{ choice.choice_text }}
                 <input type="checkbox" name="{{ question.question_name }}" value="3.0" />
