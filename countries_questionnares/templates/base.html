@@ -10,19 +10,29 @@
             Countries Questionnares
         {% endblock %}
     </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-2">
     {% block content %}
-        Welcome to the questionnaire to find your personal point on the       Inglehart–Welzel Cultural Map!
-
-Here you can get your personal point on the Inglehart–Welzel Cultural Map
-<p> 
-<a href="{% url 'wvs_point_about' %}">More about the Inglehart–Welzel map</a>
-</p>
-<p>
-<a href="{% url 'wvs_point_questionnaire' %}">Run the test</a>
+        <p>
+        Welcome to the questionnaire!
+        <br>
+        Here you can get your personal point on the Inglehart–Welzel Cultural Map
+        </p>
+        <p> 
+        <a href="{% url 'wvs_point_about' %}">More about the Inglehart–Welzel map</a>
+        </p>
+        <p>
+        <a class="btn btn-primary" href="{% url 'wvs_point_questionnaire' %}">Run the test</a>
+        </p>
+        <p>
+        Later a second more complex questionnaire will be added.
     {% endblock %}
-</p>     
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -7,8 +7,8 @@ I will add a second questionnaire - to find most suitable country using bunch of
 
 Roadmap:
 
-- correct the methodology according to Inglehart methodology instead of Welzel's one
-- add some style for better view.
+- correct the methodology according to Inglehart methodology instead of Welzel's one <DONE>
+- add basic view-style <DONE>
 - upload app to public server
 - develop second questionnaire
 - add some supporting features
