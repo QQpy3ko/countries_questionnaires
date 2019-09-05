@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+
 {% block content %}   
 
 {% if error_message %}
@@ -10,7 +12,7 @@
 
     {% for question in questions_list %}
 
-        {{ question.question_text }}<p>
+        <b>{{ question.question_text }}</b><br><p>
 
         {% for choice in question.choice_set.all %}
 
@@ -19,7 +21,7 @@
                 {% if choice.choice_text == 'Obedience' or choice.choice_text == 'Religious faith' %}
 
                 {{ choice.choice_text }}
-                <input type="checkbox" name="{{ question.question_name }}" value="3.0" />
+                <input type="checkbox"  name="{{ question.question_name }}" value="3.0" />
                 <br>
 
                 {% else %}
@@ -32,9 +34,22 @@
 
             {% else %}
 
+                {% if question.question_name == 'godimp' or question.question_name == 'homosexuality' or question.question_name ==  'abortion'  %}
+                
+                    <div style="display: inline-block;"" class="form-check form-check-inline"">
+                        {{ choice.choice_text }}
+                        <input class="form-check-input" type="radio" name="{{ question.question_name }}" id="inlineRadio1" value="{{ choice.value }}">
+                        <label class="form-check-label" for="inlineRadio1"></label>
+                        <br>
+                    </div>
+
+                {% else %}
+
                 {{ choice.choice_text }}
                 <input type="radio" name="{{ question.question_name }}" value="{{ choice.value }}" />
                 <br>
+
+                {% endif %}
 
             {% endif %}
 
@@ -44,7 +59,7 @@
         </p>
     {% endfor %}
 
-    <input type="submit" value="Submit" />
+    <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>
 
