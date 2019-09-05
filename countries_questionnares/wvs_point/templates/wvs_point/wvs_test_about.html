@@ -2,16 +2,31 @@
 
 {% block content %}   
 
-There is a image of the Inglehart–Welzel Cultural Map. 
-<br>
+<p>From Wikipedia: since 1981 a worldwide network of social scientists have conducted representative national surveys as part of World Values Survey in almost 100 countries.
+One of results of WVS is of the Inglehart–Welzel Cultural Map. The global cultural map shows how scores of societies are located on two dimensions. Moving upward on this map reflects the shift from Traditional values to Secular-rational and moving rightward reflects the shift from Survival values to Self–expression values.
+<p>
+Traditional values emphasize the importance of religion, parent-child ties, deference to authority and traditional family values. People who embrace these values also reject divorce, abortion, euthanasia and suicide. These societies have high levels of national pride and a nationalistic outlook.
+</p><p>
+Secular-rational values have the opposite preferences to the traditional values. These societies place less emphasis on religion, traditional family values and authority. Divorce, abortion, euthanasia and suicide are seen as relatively acceptable.
+</p><p>
+Survival values place emphasis on economic and physical security. It is linked with a relatively ethnocentric outlook and low levels of trust and tolerance.
+</p><p>
+Self-expression values give high priority to environmental protection, growing tolerance of foreigners, gays and lesbians and gender equality, and rising demands for participation in decision-making in economic and political life
+</p><p>
+More information you can find at VWS site - <a href="http://www.worldvaluessurvey.org" target="_blank">link</a>
+</p>
 
 <img src="{% static "wvs_point/vws_map_template.png" %}" alt="Inglehart–Welzel Cultural Map (wave 6) image"> 
 
 <p>
-Run the test to find your personal point on it. For example, my point is a bit above and to the left of Finland.
+The map's building provided by 10 cruisal questions from more than 200 that WVS includes. To set countries points methodology uses data from previous surveys with multilevel factor analyses. So I programmed a counting algorythm similar to official to get individual coordinates just for one person. Run the questionnare to get yours. For example, my point is a bit above of Germany. Probably I'm close to typical german values image :) 
 </p>
 
-<a href="{% url 'wvs_point_questionnaire' %}">Run the test</a>
+<img src="{% static "wvs_point/my_point.png" %}" alt="Inglehart–Welzel Cultural Map (wave 6) personal point"> 
+<p>
 
+<br>
+<a href="{% url 'wvs_point_questionnaire' %}">Run the test</a>
+</p>
 {% endblock %}
 

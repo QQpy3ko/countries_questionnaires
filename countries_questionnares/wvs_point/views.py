@@ -6,7 +6,12 @@ from django.shortcuts import redirect, get_object_or_404
 from .models import Question, Choice
 
 from PIL import Image
+import base64
+import io
 
+# from django.contrib.staticfiles.templatetags.staticfiles import static
+# from django.templatetags.static import static
+from django.contrib.staticfiles import finders
 
 def wvs_point_test(request):
     
@@ -84,17 +89,6 @@ def wvs_point_test(request):
             traditional_secular_sum = 0
 
 
-            # for question in questions_list:
-            #     print(question.question_type)
-            #     if question.question_name == 'autonomy' or \
-            #         question.question_name == 'post_materialist_1' or \
-            #         question.question_name == 'post_materialist_1':
-            #             continue
-            #     elif question.question_type == 'traditional_secular':
-            #         traditional_secular_sum += request.POST[question.choice_set.value()]
-            #     elif question.question_type == 'survival_self_expr':
-            #         survival_self_expr_sum += request.POST[question.choice_set.value()]
-
             for question in questions_list:
                 print(question.question_type)
                 print(question.question_name)
@@ -133,8 +127,11 @@ def wvs_point_test(request):
             center_l_coordinate = int(left_padding + survival_self_expr_scale)
             center_b_coordinate = int(bottom_minus_padding - traditional_secular_sum_scale)
 
-            wvs_map = Image.open('/mnt/ssd/ProHeGit/ctrs_quess/countries_questionnares/wvs_point/static/wvs_point/vws_map_template.png')
-            point_on_wvs_map = Image.open('/mnt/ssd/ProHeGit/ctrs_quess/countries_questionnares/wvs_point/static/wvs_point/wvs_point_20x20.png')
+            # wvs_map = Image.open('/mnt/ssd/ProHeGit/ctrs_quess/countries_questionnares/wvs_point/static/wvs_point/vws_map_template.png')
+            # point_on_wvs_map = Image.open('/mnt/ssd/ProHeGit/ctrs_quess/countries_questionnares/wvs_point/static/wvs_point/wvs_point_20x20.png')
+
+            wvs_map = Image.open(finders.find('wvs_point/vws_map_template.png'))
+            point_on_wvs_map = Image.open(finders.find('wvs_point/wvs_point_20x20.png'))
 
             half_of_point_img = 10
 
@@ -149,18 +146,31 @@ def wvs_point_test(request):
                 point_t_coordinate,
                 ),
                 mask=point_on_wvs_map)
-            show_map = wvs_map.show()
+            # show_map = wvs_map.show()
+
+            
 
             pass       
 
-            return render(
-                request,
-                'wvs_point/wvs_point_result.html', 
-                context={
-                    'autonomy_sum': autonomy_sum,
-                    'show_map': show_map
-                }
-            )
+            response = HttpResponse(content_type='image/png')
+            wvs_map.save(response, "PNG")
+            # to return as download
+            # response['Content-Disposition'] = 'attachment; filename="result.png"'
+            return response
+
+
+            # to  open reuslt in graphical program 
+
+            # return render(
+            #     request,
+            #     'wvs_point/wvs_point_result.html', 
+            #     context={
+            #         'response': response
+            #     }
+            # )
+
+
+
 
     ### for GET-request
     return render(
